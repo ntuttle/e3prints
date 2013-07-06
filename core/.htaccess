@@ -1,0 +1,15 @@
+AddType application/octet-stream .pem .ahk
+AddDefaultCharset utf-8
+AddCharset utf-8 .html .css .js .xml .json .rss .atom
+<IfModule mod_rewrite.c>
+	RewriteCond %{REQUEST_FILENAME} -f [OR]
+	RewriteCond %{REQUEST_FILENAME} -d [OR]
+	RewriteCond %{REQUEST_FILENAME} -l 
+	RewriteRule .* - [L]
+	RewriteEngine On
+	RewriteBase /
+	RewriteRule ^([^\/]+)/?$	index.php?PAGE=$1
+	RewriteRule ^([^\/]+)/([^\/]+)/?$	index.php?PAGE=$1&VIEW=$2
+	RewriteRule ^([^\/]+)/([^\/]+)/([^\/]+)/?$	index.php?PAGE=$1&VIEW=$2&ID=$3
+	RewriteRule ^([^\/]+)/([^\/]+)/([^\/]+)/([^\/]+)/?$	index.php?PAGE=$1&VIEW=$2&ID=$3&ACT=$4
+</IfModule>

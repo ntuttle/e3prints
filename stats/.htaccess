@@ -1,0 +1,6 @@
+AuthType Basic
+AuthName " Statistics"
+AuthName "e3prints.com Statistics"
+AuthUserFile /var/chroot/home/content/32/11294032/html/stats/.statspwd
+Require valid-user
+DirectoryIndex index.html

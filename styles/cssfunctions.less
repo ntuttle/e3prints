@@ -1,0 +1,47 @@
+.bgGradient(@C:@C03){
+  @GCL:lighten(@C,10%);
+  @GCD:darken(@C,10%);
+  background-image:linear-gradient(top,@GCL,@GCD);
+  background-color: @GCL;
+  background-repeat:repeat-x;
+  background-image:-khtml-gradient(linear,left top,left bottom,from(@GCL),to(@GCD));
+  background-image:-moz-linear-gradient(top,@GCL,@GCD);
+  background-image:-ms-linear-gradient(top,@GCL,@GCD);
+  background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0%,@GCL),color-stop(100%,@GCD));
+  background-image:-webkit-linear-gradient(top,@GCL,@GCD);
+  background-image:-o-linear-gradient(top,@GCL,@GCD);
+  filter:~"progid:DXImageTransform.Microsoft.gradient(startColorStr="@GCL~", EndColorStr="@GCD~")";
+}
+.bgRadial(@OPT1:@C05,@OPT2:@C02){
+  background:@C00;
+}
+.corner(@R:10px){
+  -webkit-border-radius:@R;
+  -moz-border-radius: @R;
+  border-radius:@R;
+}
+.shadow(@CLR:#000000,@BLUR:10px){
+  box-shadow:0px 1px @BLUR @CLR;
+  -moz-box-shadow: 0px 1px @BLUR @CLR;
+  -webkit-box-shadow:0px 1px @BLUR @CLR;
+}
+.textshadow(@BLUR:5px){
+  text-shadow:0px 0px @BLUR @C00;
+}
+.inset(@CLR:#000000,@B:5px){
+  box-shadow:inset 0 0 @B @CLR;
+  -moz-box-shadow: inset 0 0 @B @CLR;
+  -webkit-box-shadow:inset 0 0 @B @CLR;
+}
+.border(@B:#000000){
+  @BB:darken(@B,25%);
+  @BT:lighten(@B, 25%);
+  border: 1px solid;
+  border-color:@BT @B @BB;
+}
+.rborder(@B:#000000){
+  @BT:darken(@B,25%);
+  @BB: lighten(@B, 25%);
+  border: 1px solid;
+  border-color:@BT @B @BB;
+}

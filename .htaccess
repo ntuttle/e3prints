@@ -1,0 +1,28 @@
+AddType application/octet-stream .pem .ahk
+AddDefaultCharset utf-8
+AddCharset utf-8 .html .css .js .xml .json .rss .atom
+<IfModule mod_rewrite.c>
+	RewriteCond %{REQUEST_FILENAME} -f [OR]
+	RewriteCond %{REQUEST_FILENAME} -d [OR]
+	RewriteCond %{REQUEST_FILENAME} -l 
+	RewriteRule .* - [L]
+	RewriteEngine On
+	RewriteBase /
+	RewriteRule ^([^\/]+)/?$	index.php?page=$1
+	RewriteRule ^([^\/]+)/([^\/]+)/?$	index.php?page=$1&view=$2
+	RewriteRule ^([^\/]+)/([^\/]+)/([^\/]+)/?$	index.php?page=$1&view=$2&id=$3
+	RewriteRule ^([^\/]+)/([^\/]+)/([^\/]+)/([^\/]+)/?$	index.php?page=$1&view=$2&id=$3&act=$4
+</IfModule>
+
+##BEGIN MOBILE (do not edit below this line)
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} ((.*iPhone.*)|(.*iPod.*)|(.*BlackBerry.*)|(.*Android.*Mobile.*)|(.*Windows\ CE.*)|(.*IEMobile.*)|(.*Opera\ Mini.*)|(.*Opera\ Mobi.*))
+RewriteCond %{HTTP_COOKIE} !dm_show_classic
+RewriteCond %{QUERY_STRING} !no_redirect=true [NC]
+RewriteCond %{HTTP_HOST} ^www\. [NC,OR]
+RewriteCond %{HTTP_HOST} ^[0-9a-z-]+\.[a-z]+$ [NC]
+RewriteCond %{REQUEST_URI} ^/_dm/s/ [NC,OR]
+RewriteCond %{REQUEST_FILENAME} !\.(jpg|gif|png|css|js|txt|ico|pdf|bmp|tif|mp3|wav|wma|asf|mp4|flv|mpg|avi|csv|doc|docx|xls|xlsx|ppt|pptx|zip|rar|tar|gz|dmg|iso)$ [NC]
+RewriteBase /
+RewriteRule ^(.*)$ http://mobile.e3prints.com/ [R,L]
+##END MOBILE
